@@ -19,9 +19,15 @@ double run_tests(unsigned int c, unsigned n);
 
 int main() {
 
-    unsigned val = 100000;
+    cout << "style: new array each push\nenter scale (times 10,000): " << endl;
 
-    cout << val << " pushes took an avg of " << run_tests(10, val) << " ms" << endl;
+    int scale;
+    cin >> scale;
+    cout << endl;
+
+    unsigned val = 10000 * scale;
+
+    cout << val << " pushes took an avg of " << run_tests(5, val) << " ms" << endl;
 
     cout << "Runtime finished" << endl;
     return 0;
