@@ -8,58 +8,13 @@
  */
 
 #include <iostream>
-#include <chrono>
 
 #include "stack-stage3.h"
 
 using namespace std;
 
-double time_n_pushes(unsigned n);
-double run_tests(unsigned int c, unsigned n);
-
 int main() {
-
-    cout << "style: new array each push\nenter scale (times 10,000): " << endl;
-
-    int scale;
-    cin >> scale;
-    cout << endl;
-
-    unsigned val = 10000 * scale;
-
-    cout << val << " pushes took an avg of " << run_tests(5, val) << " ms" << endl;
-
-    cout << "Runtime finished" << endl;
+    // You can use this main() to run your own analysis or initial testing code.
+    cout << "If you are seeing this, you have successfully run main!" << endl;
     return 0;
-}
-
-// times how long it takes to push n items to a stack (the stack defined in stack-stage3.h)
-double time_n_pushes(unsigned n) 
-{
-    stack<unsigned> s;
-    // get starting clock value
-    auto start_time = chrono::system_clock::now();
-    // do the n pushes
-    for (unsigned i = 0; i < n; i++) 
-    {
-        s.push(i);
-    }
-    // get ending clock value
-    auto stop_time = chrono::system_clock::now();
-    // compute elapsed time in seconds
-    chrono::duration<double> elapsed = stop_time - start_time;
-    return elapsed.count();
-}
-
-// runs n push tests c times and averages, returns that average
-double run_tests(unsigned int c, unsigned n)
-{
-    double sum = 0;
-    for( unsigned int i = 0; i < c; i++ )
-    {
-        sum += time_n_pushes(n);
-    }
-
-    // value returned is in milliseconds (ms)
-    return (sum / c) * 1000.0;
 }

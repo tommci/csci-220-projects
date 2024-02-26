@@ -20,7 +20,6 @@
 
 #include <cstddef> // for size_t
 #include <string>  // for stage 1
-#include <iostream> // for debugging
 
 using namespace std;
 
@@ -101,34 +100,20 @@ T stack<T>::top()
 template <typename T>
 void stack<T>::push(const T& ITEM)
 {
-// DOUBLE CAPACITY METHOD
-    // if( _length == _capacity )
-    // {
-    //     T* temp = new T[_capacity * 2];
-    //     for(int i = 0; i < _length; i++)
-    //     {
-    //         temp[i] = _data[i];
-    //     }
-    //     delete[] _data;
-    //     _data = temp;
-    //     _capacity *= 2;
-    // }
-
-    // _data[_length] = ITEM;
-    // _length++;
-
-// NEW ARRAY EACH PUSH METHOD
-    T* temp = new T[_length + 1];
-    for(int i = 0; i < _length; i++)
+    if( _length == _capacity )
     {
-        temp[i] = _data[i];
+        T* temp = new T[_capacity * 2];
+        for(int i = 0; i < _length; i++)
+        {
+            temp[i] = _data[i];
+        }
+        delete[] _data;
+        _data = temp;
+        _capacity *= 2;
     }
-    delete[] _data;
-    _data = temp;
 
     _data[_length] = ITEM;
     _length++;
-
 }
 
 template <typename T>
